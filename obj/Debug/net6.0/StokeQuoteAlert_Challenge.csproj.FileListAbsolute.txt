@@ -1,0 +1,16 @@
+C:\Users\ncals\StokeQuoteAlert_Challenge\bin\Debug\net6.0\StokeQuoteAlert_Challenge.exe
+C:\Users\ncals\StokeQuoteAlert_Challenge\bin\Debug\net6.0\StokeQuoteAlert_Challenge.deps.json
+C:\Users\ncals\StokeQuoteAlert_Challenge\bin\Debug\net6.0\StokeQuoteAlert_Challenge.runtimeconfig.json
+C:\Users\ncals\StokeQuoteAlert_Challenge\bin\Debug\net6.0\StokeQuoteAlert_Challenge.dll
+C:\Users\ncals\StokeQuoteAlert_Challenge\bin\Debug\net6.0\StokeQuoteAlert_Challenge.pdb
+C:\Users\ncals\StokeQuoteAlert_Challenge\obj\Debug\net6.0\StokeQuoteAlert_Challenge.csproj.AssemblyReference.cache
+C:\Users\ncals\StokeQuoteAlert_Challenge\obj\Debug\net6.0\StokeQuoteAlert_Challenge.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ncals\StokeQuoteAlert_Challenge\obj\Debug\net6.0\StokeQuoteAlert_Challenge.AssemblyInfoInputs.cache
+C:\Users\ncals\StokeQuoteAlert_Challenge\obj\Debug\net6.0\StokeQuoteAlert_Challenge.AssemblyInfo.cs
+C:\Users\ncals\StokeQuoteAlert_Challenge\obj\Debug\net6.0\StokeQuoteAlert_Challenge.csproj.CoreCompileInputs.cache
+C:\Users\ncals\StokeQuoteAlert_Challenge\obj\Debug\net6.0\StokeQuoteAlert_Challenge.dll
+C:\Users\ncals\StokeQuoteAlert_Challenge\obj\Debug\net6.0\refint\StokeQuoteAlert_Challenge.dll
+C:\Users\ncals\StokeQuoteAlert_Challenge\obj\Debug\net6.0\StokeQuoteAlert_Challenge.pdb
+C:\Users\ncals\StokeQuoteAlert_Challenge\obj\Debug\net6.0\StokeQuoteAlert_Challenge.genruntimeconfig.cache
+C:\Users\ncals\StokeQuoteAlert_Challenge\obj\Debug\net6.0\ref\StokeQuoteAlert_Challenge.dll
+c:\Users\ncals\StokeQuoteAlert_Challenge\bin\Debug\net6.0\config.json
