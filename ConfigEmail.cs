@@ -23,10 +23,13 @@ public class ConfigEmail {
     /// Excecao caso o objeto seja criado vazio
     /// </exception>
     public static ConfigEmail LoadInfo(string path) {
+        //le arquivo json
         string jsonFile = File.ReadAllText(path);
 
+        //refatora informacoes de configuracao para envio de email
         ConfigEmail? config = System.Text.Json.JsonSerializer.Deserialize<ConfigEmail>(jsonFile);
 
+        //retorna configuracoes, se for null aciona excecao
         return config ?? throw new Exception("Erro - json file vazio!");
     }
 

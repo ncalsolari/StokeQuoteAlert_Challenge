@@ -48,11 +48,12 @@ public class Program {
                 return;
             }
 
+            //salva preco em um arquivo .csv
             SaveData.SavePriceToCsv(stockName, result);
 
-            if (result > sellPrice && !thresholdFlag) {
+            if (result > sellPrice && !thresholdFlag) {//condicao de venda
 
-                thresholdFlag = true;
+                thresholdFlag = true; //evita enviar multiplos emails quando ativo atingir os thresholds
 
                 //define mensagem do email
                 string emailSubject = "Alerta de venda para " + stockName;
@@ -67,7 +68,7 @@ public class Program {
 
 
             }
-            else if (result < buyPrice && !thresholdFlag) {
+            else if (result < buyPrice && !thresholdFlag) {//condicao de compra
 
                 thresholdFlag = true;
 
