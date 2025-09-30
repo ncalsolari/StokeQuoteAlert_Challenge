@@ -4,8 +4,12 @@ using System.Net.Mail;
 using System.Text.Json;
 using Microsoft.VisualBasic;
 
+/// <summary>
+/// O programa avisa, via e-mail, caso a cotação de um ativo da B3 caia mais do que certo nível, ou suba acima de outro.
+/// </summary>
 public class Program {
     private static readonly string path = "config.json";
+    private static bool emailSentFlag = false;
     private static bool thresholdFlag = false;
 
     static async Task Main(string[] args) {
@@ -31,14 +35,8 @@ public class Program {
         EmailDealer emailDealer = new EmailDealer(configEmail);
         StockDealer stockDealer = new StockDealer(stockName);
 
-        Console.WriteLine($"configs email: {configEmail.EmailTo}");
-        Console.WriteLine("configs SMTP:");
-        Console.WriteLine($"configs HOST: {configEmail.Smtp.Host}");
-        Console.WriteLine($"configs PORT: {configEmail.Smtp.Port}");
-        Console.WriteLine($"configs USER: {configEmail.Smtp.User}");
-        Console.WriteLine($"configs KEY: {configEmail.Smtp.Key}");
-        Console.WriteLine("Preco de compra: " + sellPrice);
-        Console.WriteLine("Preco de venda: " + buyPrice + "\n");
+        Console.WriteLine("\nPreco de venda: " + sellPrice);
+        Console.WriteLine("Preco de compra: " + buyPrice + "\n");
 
         while (true) {
             //busca o preco do ativo
@@ -50,6 +48,8 @@ public class Program {
                 return;
             }
 
+            SaveData.SavePriceToCsv(stockName, result);
+
             if (result > sellPrice && !thresholdFlag) {
 
                 thresholdFlag = true;
@@ -59,8 +59,12 @@ public class Program {
                 string emailBody = "O ativo " + stockName + " atingiu o threshold de venda (" + sellPrice + ").\n" + stockName + ": R$ " + result;
 
                 //envia email de venda
-                emailDealer.SendEmail(emailSubject, emailBody);
-                Console.WriteLine("ALERTA DE VENDA - EMAIL ENVIADO \n" + stockName + ": R$ " + result + "\n");
+                emailSentFlag = emailDealer.SendEmail(emailSubject, emailBody);
+
+                if (emailSentFlag) { //checa se email foi enviado corretamente
+                    Console.WriteLine("ALERTA DE VENDA - EMAIL ENVIADO \n" + stockName + ": R$ " + result + "\n");
+                }
+
 
             }
             else if (result < buyPrice && !thresholdFlag) {
@@ -72,20 +76,23 @@ public class Program {
                 string emailBody = "O ativo " + stockName + " atingiu o threshold de compra (" + sellPrice + ").\n" + stockName + ": R$ " + result;
 
                 //envia email de compra
-                emailDealer.SendEmail(emailSubject, emailBody);
-                Console.WriteLine("ALERTA DE COMPRA - EMAIL ENVIADO \n" + stockName + ": R$ " + result + "\n");
+                emailSentFlag = emailDealer.SendEmail(emailSubject, emailBody);
+
+                if (emailSentFlag) { // checa se email foi enviado corretamente
+                    Console.WriteLine("ALERTA DE COMPRA - EMAIL ENVIADO \n" + stockName + ": R$ " + result + "\n");
+                }
 
             }
-            else if (result >= buyPrice && result <= sellPrice) {
+            else if (result >= buyPrice && result <= sellPrice) { // se o ativo voltar aos limites de compra e venda, o envio de email eh reabilitado
 
                 thresholdFlag = false;
                 Console.WriteLine("Ativo entre os thresholds: \n" + stockName + ": R$ " + result + "\n");
             }
-            else {
-                Console.WriteLine("EMAIL ENVIADO \n" + stockName + ": R$ " + result + "\n");
+            else {//ativo fora dos limites, email ja foi enviado
+                Console.WriteLine("PRECO ATUAL \n" + stockName + ": R$ " + result + "\n");
             }
 
-            //aguarda 1 minuto e faz a analise de preco novamente
+            //aguarda 30 segundos e faz a analise de preco novamente
             await Task.Delay(TimeSpan.FromSeconds(30));
 
         }

@@ -19,7 +19,7 @@ public class EmailDealer {
     ///   /// <exception cref="e">
     /// Excecao caso o email nao seja enviado
     /// </exception>
-    public void SendEmail(string subject, string body) {
+    public bool SendEmail(string subject, string body) {
 
         //separa as variaveis do servidor SMTP
         SmtpVars? smtp = this.config.Smtp;
@@ -36,9 +36,12 @@ public class EmailDealer {
 
             //envia o email
             client.Send(email);
+
+            return true;
         }
         catch (Exception e) {
             Console.WriteLine("Erro ao enviar o email - " + e.Message);
+            return false;
         }
     }
 }
