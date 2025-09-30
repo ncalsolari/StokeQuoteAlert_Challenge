@@ -2,7 +2,7 @@ using System.Net;
 using System.Net.Mail;
 
 
-public class EmailDealer
+public class EmailDealer 
 {
     private readonly ConfigEmail config;
 
@@ -17,7 +17,7 @@ public class EmailDealer
 
         try
         {
-            SmtpClient client = new SmtpClient(smtp.Host, smtp.Port)
+            using SmtpClient client = new SmtpClient(smtp.Host, smtp.Port)
             {
                 Credentials = new NetworkCredential(smtp.User, smtp.Key),
                 EnableSsl = true //criptografa
@@ -28,9 +28,9 @@ public class EmailDealer
 
             client.Send(email);
         }
-        catch
+        catch(Exception e)
         {
-            Console.WriteLine("NULL Config Variables");
+            Console.WriteLine("NULL Config Variables - " + e.Message);
         }
 
 
