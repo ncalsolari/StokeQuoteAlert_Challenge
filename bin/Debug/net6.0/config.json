@@ -1,9 +1,0 @@
-{
-    "EmailTo": "test.expiatorio@gmail.com",
-    "Smtp": {
-        "Host": "smtp.gmail.com",
-        "Port": 587,
-        "User": "test.expiatorio@gmail.com",
-        "Key": "hodboklwnnszsjps"
-    }
-}

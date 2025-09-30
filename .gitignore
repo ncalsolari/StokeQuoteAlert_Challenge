@@ -1,0 +1,44 @@
+
+## Compilação
+/bin/
+/obj/
+/out/
+
+## Arquivos do Visual Studio / VS Code
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Arquivos de build e publish
+*.exe
+*.dll
+*.pdb
+*.app
+*.db
+*.cache
+*.log
+
+## Publicações
+**/publish/
+/*.zip
+/*.tar.gz
+
+## Arquivos de sistema
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+## Configuração de ambiente
+*.env
+
+## Logs
+*.log
+
+## Outros
+*.vs/
+
+# Exceções - manter arquivos de configuração
+!config.json
