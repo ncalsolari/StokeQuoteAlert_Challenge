@@ -1,6 +1,6 @@
 # 📈 Stock Quote Alert
 
-Uma aplicação de console em **C#** para monitorar em tempo real a cotação de ativos da **B3**, enviando alertas por **e-mail** quando os preços ultrapassarem os limites definidos.
+Uma aplicação de console em **C#** para monitorar em tempo real a cotação de ativos da **B3** (intervalos de 30s), enviando alertas por **e-mail** quando os preços ultrapassarem os limites definidos e salvando os valores em um arquivo **.csv**.
 
 ## 🚀 Funcionalidade
 
